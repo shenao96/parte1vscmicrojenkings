@@ -1,12 +1,14 @@
 pipeline{
     agent any
+
     stages{
         stage('Clonar el repositorio'){
             steps{
                 git branch: 'main', credentialsId: 'git-jenkins', url: 'https://github.com/shenao96/parte1vscmicrojenkings.git'
+            }
         }
         stage('Contruir imagen Docker'){
-            steps{
+            steps {
                 script{
                     witchCredentials([
                     string(credentialsId: 'MONGO:URI', variable: 'MONGO_URI' )
@@ -29,5 +31,5 @@ pipeline{
                         }
                 }
             }
-        
-    '}'
+        }
+    '}' 
