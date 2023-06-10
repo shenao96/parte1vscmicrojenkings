@@ -19,15 +19,15 @@ pipeline{
             }
         }
         stage('Desplegar contenedor Docker'){
-            steps{
-                script{
+            steps {
+                script {
                     witchCredentials([
                             string(credentialsId: 'MONGO:URI', variable: 'MONGO_URI' )
                         ]) {  
                             sh """
                                 sed 's|\\${MONGO_URI}|${MONGO_URI}|g' docker-compose.yml > docker-compose-update.yml
                                 docker-compose -f  docker-compose-update.yml up -d   
-                        """
+                            """
                         }
                 }
             }
