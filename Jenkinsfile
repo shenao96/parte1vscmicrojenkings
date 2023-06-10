@@ -10,7 +10,7 @@ pipeline{
         stage('Contruir imagen Docker'){
             steps {
                 script{
-                    witchCredentials([
+                    withCredentials([
                     string(credentialsId: 'MONGO:URI', variable: 'MONGO_URI' )
                     ]) {
                     docker.build('proyectos-backend-micro:v1', '--build-arg MONGO_URI=${MONGO_URI} .')
