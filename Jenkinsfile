@@ -21,7 +21,7 @@ pipeline{
         stage('Desplegar contenedor Docker'){
             steps {
                 script {
-                    witchCredentials([
+                    withCredentials([
                             string(credentialsId: 'MONGO:URI', variable: 'MONGO_URI' )
                         ]) {  
                             sh """
